@@ -28,7 +28,7 @@
 </style>
 
 <header>
-	<h1>Barbre Familygram</h1>
+	<h1>Barbre.Family</h1>
 	<p>Zach, Kira and Anna</p>
 </header>
 <slot />

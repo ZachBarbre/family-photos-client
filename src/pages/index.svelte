@@ -11,7 +11,7 @@
 		display: grid;
 		justify-content: center;
 		/* padding: 1em; */
-		margin: 0 auto;
+		/* margin: 0 auto; */
         gap: 10px;
 	}	
 </style>

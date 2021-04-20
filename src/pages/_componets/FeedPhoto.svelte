@@ -11,27 +11,12 @@
   }
 </script>
 
-<div class="photo">
-  <div class="img-wrapper">
-    <!-- svelte-ignore a11y-missing-attribute -->
-    <img src="{photoData.url}">
-  </div>
-  <button class="like" on:click={like}>
-    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart-fill" viewBox="0 0 16 16">
-      <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
-    </svg>
-    {#if count > 0}
-    <p>+{count}</p>
-    {/if}
-  </button>
-</div>
-
 <style>
   .photo {
     display: grid;
     justify-items: center;
     border: 1px solid var(--greyblue);
-    max-width: 720px;
+    max-width: 500px;
     
   }
   
@@ -65,4 +50,29 @@
     padding-top: 2px;
   }
 
+  .no-hearts {
+    color: var(--pink);
+    font-size: x-small;
+    margin-bottom: 3px;
+  }
+
 </style>
+
+<div class="photo">
+  <div class="img-wrapper">
+    <!-- svelte-ignore a11y-missing-attribute -->
+    <img src="{photoData.url}">
+  </div>
+  <button class="like" on:click={like}>
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart-fill" viewBox="0 0 16 16">
+      <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
+    </svg>
+    {#if count > 0}
+    <p>+{count}</p>
+    {/if}
+  </button>
+  {#if count > 0}
+  <div class="no-hearts">Hearts are not yet saved, We still feel it in our hearts though :)</div>
+  {/if}
+</div>
+
