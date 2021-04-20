@@ -1,8 +1,8 @@
 {
   "background_color": "#ffffff",
-  "theme_color": "#E938C2",
-  "name": "Routify app",
-  "short_name": "Routify app",
+  "theme_color": "#546a7b",
+  "name": "Barbre.Family",
+  "short_name": "Barbre.Family",
   "start_url": "/",
   "display": "standalone",
   "icons": [
@@ -12,10 +12,9 @@
       "type": "image/png"
     },
     {
-      "src": "/images/touch-icons/logo-800.png",
-      "sizes": "800x800",
-      "type": "image/png",
-      "purpose": "maskable any"
+      "src": "/images/touch-icons/logo-512.png",
+      "sizes": "512X512",
+      "type": "image/png"
     }
   ]
 }
