@@ -10,6 +10,7 @@ import getConfig from '@roxi/routify/lib/utils/config'
 import autoPreprocess from 'svelte-preprocess'
 import postcssImport from 'postcss-import'
 import { injectManifest } from 'rollup-plugin-workbox'
+import replace from '@rollup/plugin-replace'
 
 
 const { distDir } = getConfig() // use Routify's distDir for SSOT
@@ -67,7 +68,10 @@ export default {
             dedupe: importee => !!importee.match(/svelte(\/|$)/)
         }),
         commonjs(),
-
+        replace({
+            preventAssignment: true,
+            API_URL: production ? 'https://api.barbre.family/api/v1' : 'http://localhost:3001/api/v1',
+        }),
         production && terser(),
         !production && !isNollup && serve(),
         !production && !isNollup && livereload(distDir), // refresh entire window when code is updated

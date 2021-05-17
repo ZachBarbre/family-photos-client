@@ -1,4 +1,7 @@
 <!-- routify:options preload="proximity" -->
+<script>
+  import { url } from '@roxi/routify'
+</script>
 
 <style>
   header {
@@ -15,6 +18,14 @@
     margin: 2rem 0 .5rem;
   }
 
+  a {
+    text-decoration: none;
+  }
+
+  a:visited, a:hover, a:link {
+    color: inherit;
+  }
+
   p {
     font-size: 1rem;
     font-weight: 300;
@@ -28,7 +39,9 @@
 </style>
 
 <header>
-	<h1>Barbre.Family</h1>
+  <a href="{$url('./')}">
+    <h1>Barbre.Family</h1>
+  </a>
 	<p>Zach, Kira and Anna</p>
 </header>
 <slot />

@@ -1,9 +1,20 @@
 <script>
+    import { ready } from '@roxi/routify'
     import FeedPhoto from './_componets/FeedPhoto.svelte'
-    import { metatags } from '@roxi/routify'
-    import { photos } from './_data';
-    metatags.title = 'Barbre.Family'
-    metatags.description = 'Description coming soon...'
+    import Loader from './_componets/Loader.svelte'
+    import photoData from '../store/stores'
+    
+    let loading = true
+    let photos = []
+
+    async function getPhotos() {
+        const response = await fetch('API_URL/photos', { 'x-routify-valid-for': 3600})
+        const data = await response.json()
+        photos = data.data;
+        loading = false;
+        $ready()
+    }
+    getPhotos()
 </script>
 
 <style>
@@ -13,12 +24,17 @@
 		/* padding: 1em; */
 		/* margin: 0 auto; */
         gap: 10px;
-	}	
+	}
+    	
 </style>
 
  <main>
-    {#each photos as photo}
-        <FeedPhoto photoData={photo}/>
-    {/each}
+    {#if loading}
+        <Loader />
+    {:else}
+        {#each photos as photo (photo.id)}
+            <FeedPhoto photoData={photo} />
+        {/each}
+    {/if}
  </main>
 
