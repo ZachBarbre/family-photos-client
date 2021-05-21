@@ -1,20 +1,34 @@
 <script>
   import { ready } from '@roxi/routify'
+  import { getApi } from '../../utils/crud'
   import Heart from '../_componets/Heart.svelte';
   import Loader from '../_componets/Loader.svelte'
+  import { photos } from '../_stores';
   export let photoId
-  let photo = {}
   let loading = true;
+  let photo = isPhotoInStore(photoId)
+  
+  function isPhotoInStore(id) {
+    const storePhoto = $photos.filter(photo => photo.id = id)
+    if (storePhoto.length) {
+      return storePhoto[0]
+    }
+    return null;
+  }
 
   async function getPhoto(id) {
-    const response = await fetch(`API_URL/photos/photo/${id}`)
-    const data = await response.json()
+    const data = await getApi(`API_URL/photos/photo/${id}`)
     photo = data.data[0]
     loading = false
     $ready()
   }
 
-  getPhoto(photoId)
+  if (!photo) {
+    getPhoto(photoId)
+  } else {
+    loading = false
+  }
+
 </script>
 
 <style>
@@ -25,15 +39,15 @@
     width: 50%;
     margin: 0 auto;
   }
-  @media screen and (max-width: 420px) {
-    .large-photo {
-      width: unset;
-    }
-  }
-
+  
   @media screen and (max-width: 1000px) {
     .large-photo {
       width: 80%;
+    }
+  }
+  @media screen and (max-width: 420px) {
+    .large-photo {
+      width: 95%;
     }
   }
   .photo {
@@ -41,6 +55,10 @@
     justify-items: center;
     border: 1px solid var(--greyblue);
     
+  }
+
+  .photo p {
+    padding: 0 1rem;
   }
   
   img {

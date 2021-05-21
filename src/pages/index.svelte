@@ -1,20 +1,25 @@
 <script>
     import { ready } from '@roxi/routify'
+    import { getApi } from '../utils/crud'
     import FeedPhoto from './_componets/FeedPhoto.svelte'
     import Loader from './_componets/Loader.svelte'
-    import photoData from '../store/stores'
+    import { photos } from './_stores'
     
     let loading = true
-    let photos = []
 
     async function getPhotos() {
-        const response = await fetch('API_URL/photos', { 'x-routify-valid-for': 3600})
-        const data = await response.json()
-        photos = data.data;
+        const data = await getApi('API_URL/photos')
+        photos.update(photoArray => photoArray.concat(data.data))
         loading = false;
         $ready()
     }
-    getPhotos()
+
+    if ($photos.length === 0) {
+        getPhotos()
+    } else {
+        loading = false
+    }
+
 </script>
 
 <style>
@@ -32,7 +37,7 @@
     {#if loading}
         <Loader />
     {:else}
-        {#each photos as photo (photo.id)}
+        {#each $photos as photo }
             <FeedPhoto photoData={photo} />
         {/each}
     {/if}

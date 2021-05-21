@@ -1,6 +1,7 @@
 <!-- routify:options preload="proximity" -->
 <script>
   import { url } from '@roxi/routify'
+  import { error } from './_stores'
 </script>
 
 <style>
@@ -31,6 +32,10 @@
     font-weight: 300;
   }
 
+  .error {
+    color: var(--coral);
+  }
+
   @media (max-width: 420px) {
     h1 {
       margin: 1rem 0 .25rem;
@@ -43,6 +48,9 @@
     <h1>Barbre.Family</h1>
   </a>
 	<p>Zach, Kira and Anna</p>
+  {#if $error} 
+    <p class="error">An error has occured. Please reload and try again.</p>
+  {/if}
 </header>
 <slot />
 
