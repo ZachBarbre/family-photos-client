@@ -9,7 +9,7 @@
   let photo = isPhotoInStore(photoId)
   
   function isPhotoInStore(id) {
-    const storePhoto = $photos.filter(photo => photo.id = id)
+    const storePhoto = $photos.filter(photo => photo.id === id)
     if (storePhoto.length) {
       return storePhoto[0]
     }

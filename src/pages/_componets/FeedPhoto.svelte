@@ -1,7 +1,7 @@
 <script>
   import { url, prefetch } from "@roxi/routify";
   import Heart from './Heart.svelte';
-  export let photoData;
+  export let photoData
   const options = {
         validFor: 3600,
         writeHeaders: true
@@ -13,6 +13,7 @@
     display: grid;
     justify-items: center;
     border: 1px solid var(--greyblue);
+    border-radius: 5px;
     max-width: 620px;
     
   }
