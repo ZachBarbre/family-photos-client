@@ -3,12 +3,11 @@
     import { getApi } from '../utils/crud'
     import FeedPhoto from './_componets/FeedPhoto.svelte'
     import Loader from './_componets/Loader.svelte'
-    import { photos } from './_stores'
+    import { photos, moreImages } from './_stores'
     
     let loading = true
     let loadingMore = false;
     let lastImageId = null
-    let moreImages = true
     let scrollCheck = null;
 
     async function getPhotos() {
@@ -26,7 +25,7 @@
         const numberOfPhotos = data.data.length
         lastImageId = data.data[numberOfPhotos - 1].id
         if (numberOfPhotos < limit) {
-            moreImages = false;
+            moreImages.set(false);
         }
     }
 
@@ -37,7 +36,8 @@
                 : document.body.offsetHeight
             let scrollY = window.scrollY
             scrollCheck = offset - scrollY
-            if (scrollCheck < 2500 && moreImages) {
+            console.log("🚀 ~ file: index.svelte ~ line 39 ~ handleScrollCheck ~ scrollCheck", scrollCheck, $moreImages)
+            if (scrollCheck < 2500 && $moreImages) {
                 loadingMore = true
                 loadMorePhotos()
             }
@@ -87,6 +87,6 @@
         {#each $photos as photo}
             <FeedPhoto photoData={photo} />
         {/each}
-        <button class:hide={!moreImages} on:click={loadMorePhotos}>Load More</button>
+        <button class:hide={!$moreImages} on:click={loadMorePhotos}>Load More</button>
     {/if}
  </main>

@@ -4,4 +4,6 @@ export const photos = writable([]);
 
 export const error = writable(false)
 
-export const morePhotos = writable(true)
+export const moreImages = writable(true)
+
+export const admin = writable(false);
