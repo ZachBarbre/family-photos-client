@@ -14,7 +14,6 @@
     const formData = new FormData()
     formData.append('password', values.values.password)
     const response = await postApi('API_URL/admin', formData)
-    console.log("🚀 ~ file: _layout.svelte ~ line 13 ~ handleSubmit ~ response", response)
     if (response) {
       admin.set(true)
       localStorage.setItem('admin', true)
