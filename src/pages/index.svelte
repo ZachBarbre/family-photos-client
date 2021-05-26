@@ -36,7 +36,6 @@
                 : document.body.offsetHeight
             let scrollY = window.scrollY
             scrollCheck = offset - scrollY
-            console.log("🚀 ~ file: index.svelte ~ line 39 ~ handleScrollCheck ~ scrollCheck", scrollCheck, $moreImages)
             if (scrollCheck < 2500 && $moreImages) {
                 loadingMore = true
                 loadMorePhotos()
