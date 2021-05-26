@@ -251,7 +251,7 @@
     {#if result}
       <div class="result">
         <h3>{result}</h3>
-        <a href="{$url(`/${newUrl}`)}">https://barbre.family/{newUrl}</a>
+        <a href="{$url(`../${newUrl}`)}">https://barbre.family{newUrl}</a>
       </div>
     {/if}
   {:else if formType === 'Update'}

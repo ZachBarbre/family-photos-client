@@ -26,13 +26,13 @@
 </style>
 
 <div class="photo">
-  <a use:prefetch={options} href="{$url(`/photo/:photoId`,  { photoId: photoData.id })}">
+  <a href="{$url(`/photo/:photoId`,  { photoId: photoData.id })}">
       <img 
         sizes="(max-width: 375px) 95vw, 640px"
         srcset="
-        {photoData.spaces.image_350.url} 350w,
-        {photoData.spaces.image_620.url} 640w"
-        src="{photoData.spaces.image_620.url}" 
+        {photoData.spaces.image_350['PHOTO_URL']} 350w,
+        {photoData.spaces.image_620['PHOTO_URL']} 640w"
+        src="{photoData.spaces.image_620['PHOTO_URL']}" 
         alt="{photoData.description}">
   </a>
   <Heart />

@@ -71,6 +71,7 @@ export default {
         replace({
             preventAssignment: true,
             API_URL: production ? 'https://api.barbre.family/api/v1' : 'http://localhost:3001/api/v1',
+            PHOTO_URL: production ? 'cdnUrl' : 'url',
         }),
         production && terser(),
         !production && !isNollup && serve(),
