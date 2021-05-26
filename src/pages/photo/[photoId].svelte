@@ -85,12 +85,12 @@
     <div class="photo">
       <img
         sizes="(max-width: 1004px) 95vw, 1580px"
-        srcset="{photo.spaces.image_350.url} 350w,
-        {photo.spaces.image_620.url} 620w,
-        {photo.spaces.image_748.url} 748w,
-        {photo.spaces.image_1004.url} 1004w,
-        {photo.spaces.image_1580.url} 1500w" 
-        src="{photo.spaces.image_620.url}" 
+        srcset="{photo.spaces.image_350.cdnUrl} 350w,
+        {photo.spaces.image_620.cdnUrl} 620w,
+        {photo.spaces.image_748.cdnUrl} 748w,
+        {photo.spaces.image_1004.cdnUrl} 1004w,
+        {photo.spaces.image_1580.cdnUrl} 1500w" 
+        src="{photo.spaces.image_620.cdnUrl}" 
         alt="{photo.description}" >
       <p>{photo.description}</p>
       <Heart />
