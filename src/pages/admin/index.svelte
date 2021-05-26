@@ -114,12 +114,11 @@
     const values = get(valuesForm)
     const formData = new FormData()
     formData.append('description', values.values.description)
-    console.log(formData.get('description'))
     const data = await putApi(`API_URL/photos/photo/${values.values.id}`, formData)
     loading = false
     if (data) {
         result = 'Success! See the revised photo at:'
-        newUrl = `photo/${data.data[0].id}`
+        newUrl = `/photo/${data.data[0].id}`
       }
     
   }
@@ -252,7 +251,7 @@
     {#if result}
       <div class="result">
         <h3>{result}</h3>
-        <a href="{$url(newUrl)}">https://barbre.family/{newUrl}</a>
+        <a href="{$url(`/${newUrl}`)}">https://barbre.family/{newUrl}</a>
       </div>
     {/if}
   {:else if formType === 'Update'}
@@ -264,7 +263,7 @@
     {#if result}
       <div class="result">
         <h3>{result}</h3>
-        <a href="{$url(newUrl)}">https://barbre.family/{newUrl}</a>
+        <a href="{$url(`../${newUrl}`)}">https://barbre.family{newUrl}</a>
       </div>
     {/if}
   {:else}
