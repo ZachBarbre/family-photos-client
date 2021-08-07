@@ -1,67 +1,29 @@
-# routify-starter
+# Barbre.Family
 
-Starter template for [Routify](https://github.com/sveltech/routify).
+This is a website for sharing my family photos.
 
-### Get started
+You can view the api at (https://github.com/ZachBarbre/family-photos-api)
 
-#### Starter templates
-| Template                                  | Description                                                 |
-|-------------------------------------------|-------------------------------------------------------------|
-| [master](https://example.routify.dev/)    | Default template, includes examples folder                  |
-| [blog](https://blog-example.routify.dev/) | Generates a blog from local markdown posts. Includes mdsvex |
-| [auth](https://auth-example.routify.dev/) | Embedded login on protected pages. Includes Auth0           |
+It was built using the starter template for [Routify](https://github.com/sveltech/routify).
 
-To use a template, run:
+### Tech's used
 
-`npx @sveltech/routify init`
+[Svelte](https://svelte.dev) because single file componets are my favorite thing and svelte is a really nice language to work in.
 
-or
+[Routify](https://routify.dev/) because folder based routing makes life so much easier. I chose Routify over sveltekit because at the time sveltekit wasn't fully baked. I may revist this in the future.
 
-`npx @sveltech/routify init --branch <branch-name>`
+it is currenlty hosted on a [Digital Ocean Droplet](https://www.digitalocean.com/products/droplets/) along with the API.
 
-The above commands will populate the current directory, they don't create a new one.
+### Intersting bit of code
+
+The [index](https://github.com/ZachBarbre/family-photos-client/blob/main/src/pages/index.svelte) page incorporates infinte scrolling using a fucntion to check where the user is on the page and if anymore photos are avalibe to load.
+
+### What's next
+
+Add in a comment and 'liking' system with user auth.
 
 ### npm scripts
 
-| Syntax           | Description                                                                       |
-|------------------|-----------------------------------------------------------------------------------|
-| `dev`            | Development (port 5000)                                                           |
-| `dev:nollup`     | Development with crazy fast rebuilds (port 5000)                                  |
-| `dev-dynamic`    | Development with dynamic imports                                                  |
-| `build`          | Build a bundled app with SSR + prerendering and dynamic imports                   |
-| `serve`          | Run after a build to preview. Serves SPA on 5000 and SSR on 5005                  |
-| `deploy:*`       | Deploy to netlify or now                                                          |
-| `export`         | Create static pages from content in dist folder (used by `npm run build`)         |
+For local development run `npm run dev` after cloning this repo, cloning the api repo and starting up the local api server.
 
-### SSR and pre-rendering
-
-SSR and pre-rendering are included in the default build process.
-
-`npm run deploy:(now|netlify)` will deploy the app with SSR and prerendering included.
-
-To render async data, call the `$ready()` helper whenever your data is ready.
-
-If $ready() is present, rendering will be delayed till the function has been called.
-
-Otherwise it will be rendered instantly.
-
-See [src/pages/example/api/[showId].svelte](https://github.com/sveltech/routify-starter/blob/master/src/pages/example/api/%5BshowId%5D.svelte) for an example.
-
-### Production
-
-* For SPA or SSR apps please make sure that url rewrite is enabled on the server.
-* For SPA redirect to `__app.html`.
-* For SSR redirect to the lambda function or express server.
-
-### Typescript
-
-For Typescript, we recommend [@lamualfa](https://github.com/lamualfa) excellent [routify-ts](https://github.com/lamualfa/routify-ts/)
-
-New project: `npx routify-ts init <project-name> [routify-init-args]`
-
-Existing project: `npx routify-ts convert [project-directory]`
-
-
-### Issues?
-
-File on Github! See https://github.com/sveltech/routify/issues .
+For production run `npm run build:app` to build this as single page app. The deployment of this uses `npm run serve` with [PM2](https://pm2.keymetrics.io/) to serve the spa.
